@@ -1,0 +1,75 @@
+import random
+
+print("Nu ska vi spela sten sax påse! \nJag är python331 \n")
+namn = input("Vad heter du?")
+while True:
+    try:
+        spelomgångar = int(input("Ange antal spel omgångar: "))
+        break
+    except:
+        ValueError
+
+spelomgångar = int(spelomgångar)
+
+datorvinster = 0
+dinnavinster = 0
+val = ["sten","sax","påse"]
+x = 0
+while True:
+    datorval = random.choice(val)
+    print(f"Spelomgång,  {x+1}")
+
+    print(30*"-")
+
+    valet = str(input("Välj 'Sten', 'Sax' eller 'Påse' ->"))
+
+    valet = valet.lower()
+    valet = valet.strip()
+    while True:
+        if valet == datorval:
+            print(f"{namn} spelade {valet}")
+            print(f"Python311 spelade {datorval}\n")
+            print(f"Vinnare i spelomgång {x+1}: Oavgjort\n")
+            x+=1
+            break
+        if valet == "sten" and datorval =="påse"or valet == "sax" and datorval == "sten" or valet=="påse" and datorval == "sax":
+            print(f"{namn} spelade {valet}")
+            print(f"Python311 spelade {datorval}\n")
+            print(f"Vinnare i spelomgång {x+1}: Python311\n")
+            x+=1
+
+            datorvinster +=1
+            break
+        if datorval == "sten" and valet =="påse"or datorval== "sax" and valet == "sten" or datorval=="påse" and valet == "sax":
+            print(f"{namn} spelade {valet}")
+            print(f"Python311 spelade {datorval}\n")
+            print(f"Vinnare i spelomgång {x+1}: {namn}\n")
+            x+=1
+
+            dinnavinster +=1
+            break
+        if valet != val:
+            valet = str(input("Välj 'Sten', 'Sax' eller 'Påse' ->"))
+        else:
+            continue
+    if x==spelomgångar:
+        break
+print("SPELRESULTAT")
+print(20*"=")
+if dinnavinster > datorvinster:
+    print(f"{namn} : {dinnavinster}")
+    print(f"python311 : {datorvinster}")
+    print("Du vann")
+if dinnavinster < datorvinster:
+    print(f"python311 : {datorvinster}")
+    print(f"{namn} : {dinnavinster}")
+    print("datorn vann")
+if dinnavinster == datorvinster:
+    print(f"{namn} : {dinnavinster}")
+    print(f"python311 : {datorvinster}")
+    print("Det blev lika")
+
+
+
+            
+            
